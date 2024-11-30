@@ -26,12 +26,15 @@ function transformStateWithClones(state, actions) {
       case 'clear':
         tempState = {};
         break;
+
+      default:
+        throw new Error(`Unknown action type: ${action.type}`);
     }
 
-    let newState = { ...tempState };
+    const newState = { ...tempState };
 
     resultState.push(newState);
-    newState = {};
+    // newState = {};
   }
 
   return resultState;
